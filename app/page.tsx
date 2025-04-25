@@ -75,27 +75,41 @@ export default function NeonSpeedGame() {
       {/* Main content */}
       <main className="flex-1 flex flex-col items-center justify-center p-4 md:p-6">
         <div className="max-w-md w-full mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 animate-pulse">
-            Neon Speed
-          </h1>
-
-          <p className="text-gray-300 mb-6 md:mb-8 text-pretty">
-            Are you able to react as fast as it takes to provision a Postgres database on Neon?
-          </p>
-
           {gameState === "idle" && (
-            <Button
-              onClick={startGame}
-              className="w-full max-w-xs mx-auto text-black py-4 md:py-6 text-lg rounded-[0.375rem] border-0 shadow-lg bg-[#00E599] hover:bg-[#00e5bf]"
-            >
-              Start Game
-            </Button>
+            <>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 animate-pulse">
+                Neon Speed
+              </h1>
+
+              <p className="text-gray-300 mb-8 text-pretty">
+                Are you able to react as fast as it takes to provision a Postgres database on Neon?
+              </p>
+
+              <Button
+                onClick={startGame}
+                className="w-full max-w-xs mx-auto text-black py-4 md:py-6 text-lg rounded-[0.375rem] border-0 shadow-lg bg-[#00E599] hover:bg-[#00e5bf]"
+              >
+                Start Game
+              </Button>
+            </>
           )}
 
           {(gameState === "waiting" || gameState === "ready") && (
-            <div className="mb-6 md:mb-8">
+            <div className="flex flex-col items-center">
+              <h1
+                className="text-5xl md:text-6xl font-bold mb-8 text-[#00E599] animate-pulse"
+                style={{
+                  textShadow:
+                    "0 0 10px rgba(0, 229, 153, 0.7), 0 0 20px rgba(0, 229, 153, 0.5), 0 0 30px rgba(0, 229, 153, 0.3)",
+                }}
+              >
+                Neon Speed
+              </h1>
+
+              <p className="text-gray-300 mb-8 text-xl">Get ready! Click when the square turns green.</p>
+
               <motion.div
-                className={`w-64 h-64 mx-auto rounded-[0.375rem] cursor-pointer flex items-center justify-center text-white font-bold text-xl ${
+                className={`w-80 h-80 rounded-none cursor-pointer flex items-center justify-center text-white font-bold text-3xl ${
                   gameState === "waiting" ? "bg-red-500" : "bg-green-500"
                 }`}
                 onClick={handleClick}
@@ -116,10 +130,6 @@ export default function NeonSpeedGame() {
               >
                 {gameState === "waiting" ? "Wait..." : "CLICK NOW!"}
               </motion.div>
-
-              <p className="text-gray-300 mt-4">
-                {gameState === "waiting" ? "Get ready! Click when the square turns green." : "Click now!"}
-              </p>
             </div>
           )}
 

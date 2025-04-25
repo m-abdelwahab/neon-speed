@@ -32,10 +32,10 @@ body {
 @keyframes neon-pulse {
   0%,
   100% {
-    text-shadow: 0 0 5px rgba(74, 222, 128, 0.8), 0 0 10px rgba(74, 222, 128, 0.5), 0 0 15px rgba(74, 222, 128, 0.3);
+    text-shadow: 0 0 5px rgba(0, 229, 153, 0.8), 0 0 10px rgba(0, 229, 153, 0.5), 0 0 15px rgba(0, 229, 153, 0.3);
   }
   50% {
-    text-shadow: 0 0 10px rgba(74, 222, 128, 1), 0 0 20px rgba(74, 222, 128, 0.8), 0 0 30px rgba(74, 222, 128, 0.5);
+    text-shadow: 0 0 10px rgba(0, 229, 153, 1), 0 0 20px rgba(0, 229, 153, 0.8), 0 0 30px rgba(0, 229, 153, 0.5);
   }
 }
 

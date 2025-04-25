@@ -122,7 +122,7 @@ export default function NeonSpeedGame() {
           )}
 
           {gameState === "results" && (
-            <Card className="p-6 bg-gray-900 border-gray-800">
+            <Card className="p-6 bg-[#1a1a1a] border-gray-800">
               <h2 className="text-2xl font-bold text-white mb-4">Results</h2>
 
               <div className="space-y-4 mb-6">
@@ -139,7 +139,7 @@ export default function NeonSpeedGame() {
                 <div className="pt-4 border-t border-gray-800">
                   <p className="text-white">
                     {reactionTime && reactionTime < neonProvisioningTime
-                      ? "Impressive! Your reflexes beat Neon's average database provisioning time."
+                      ? "Impressive! You beat Neon's average database provisioning time. Sign up for a free account to try it yourself! "
                       : "Don't feel bad - Neon's Postgres provisioning time is fast. Try it yourself with a free account"}
                   </p>
                 </div>
@@ -148,7 +148,7 @@ export default function NeonSpeedGame() {
               <div className="space-y-3">
                 <a
                   href="https://neon.tech/signup?ref=neon-speed-game"
-                  className="block w-full py-3 bg-gradient-to-r from-green-500 to-cyan-500 hover:from-green-600 hover:to-cyan-600 text-white font-medium rounded-md text-center"
+                  className="block w-full py-3 bg-[#00E599] hover:bg-[#00e5bf] hover:to-cyan-600 text-black font-medium rounded-md text-center"
                 >
                   Deploy Postgres
                 </a>

@@ -86,7 +86,7 @@ export default function NeonSpeedGame() {
           {gameState === "idle" && (
             <Button
               onClick={startGame}
-              className="w-full max-w-xs mx-auto text-black py-4 md:py-6 text-lg rounded-md border-0 shadow-lg bg-[#00E599] hover:bg-[#00e5bf]"
+              className="w-full max-w-xs mx-auto text-black py-4 md:py-6 text-lg rounded-[0.375rem] border-0 shadow-lg bg-[#00E599] hover:bg-[#00e5bf]"
             >
               Start Game
             </Button>
@@ -150,7 +150,7 @@ export default function NeonSpeedGame() {
               <div className="space-y-3">
                 <a
                   href="https://neon.tech/signup?ref=neon-speed-game"
-                  className="block w-full py-3 bg-[#00E599] hover:bg-[#00e5bf] hover:to-cyan-600 text-black font-medium rounded-md text-center"
+                  className="block w-full py-3 bg-[#00E599] hover:bg-[#00e5bf] hover:to-cyan-600 text-black font-medium rounded-[0.375rem] text-center"
                 >
                   Deploy Postgres
                 </a>

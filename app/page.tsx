@@ -6,15 +6,40 @@ import { Card } from "@/components/ui/card"
 import { motion } from "framer-motion"
 import { NeonLogo } from "@/components/neon-logo"
 import { V0Badge } from "@/components/v0-badge"
+import dynamic from "next/dynamic"
+
+// Dynamically import react-confetti to avoid SSR issues
+const ReactConfetti = dynamic(() => import("react-confetti"), { ssr: false })
 
 export default function NeonSpeedGame() {
   const [gameState, setGameState] = useState<"idle" | "waiting" | "ready" | "clicked" | "results">("idle")
   const [reactionTime, setReactionTime] = useState<number | null>(null)
   const [startTime, setStartTime] = useState<number | null>(null)
+  const [showConfetti, setShowConfetti] = useState(false)
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 })
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const confettiTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   // Neon database provisioning time (in ms) - approximately 500ms
   const neonProvisioningTime = 500
+
+  useEffect(() => {
+    // Set window size for confetti
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    })
+
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   const startGame = () => {
     setGameState("waiting")
@@ -43,6 +68,16 @@ export default function NeonSpeedGame() {
       const timeTaken = endTime - (startTime || endTime)
       setReactionTime(timeTaken)
       setGameState("results")
+
+      // Show confetti if player wins
+      if (timeTaken < neonProvisioningTime) {
+        setShowConfetti(true)
+
+        // Stop confetti after 5 seconds
+        confettiTimeoutRef.current = setTimeout(() => {
+          setShowConfetti(false)
+        }, 5000)
+      }
     }
   }
 
@@ -50,8 +85,14 @@ export default function NeonSpeedGame() {
     setGameState("idle")
     setReactionTime(null)
     setStartTime(null)
+    setShowConfetti(false)
+
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current)
+    }
+
+    if (confettiTimeoutRef.current) {
+      clearTimeout(confettiTimeoutRef.current)
     }
   }
 
@@ -60,11 +101,26 @@ export default function NeonSpeedGame() {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current)
       }
+      if (confettiTimeoutRef.current) {
+        clearTimeout(confettiTimeoutRef.current)
+      }
     }
   }, [])
 
   return (
     <div className="min-h-screen flex flex-col bg-black">
+      {/* Confetti overlay when player wins */}
+      {showConfetti && (
+        <ReactConfetti
+          width={windowSize.width}
+          height={windowSize.height}
+          recycle={false}
+          numberOfPieces={500}
+          gravity={0.2}
+          colors={["#00E599", "#12FFF7", "#B9FFB3", "#ffffff", "#22c55e"]}
+        />
+      )}
+
       {/* Header with logo */}
       <header className="w-full p-4 md:p-6 flex items-center">
         <a href="https://neon.tech/signup?ref=neon-speed-game" target="_blank" rel="noopener noreferrer">

@@ -64,34 +64,36 @@ export default function NeonSpeedGame() {
   }, [])
 
   return (
-    <div className="min-h-screen flex flex-col bg-black p-4 relative">
-      <div className="absolute top-10 left-10">
+    <div className="min-h-screen flex flex-col bg-black">
+      {/* Header with logo */}
+      <header className="w-full p-4 md:p-6 flex items-center">
         <a href="https://neon.tech/signup?ref=neon-speed-game" target="_blank" rel="noopener noreferrer">
-          <NeonLogo className="h-8 w-auto hover:opacity-80 transition-opacity" />
+          <NeonLogo className="h-6 md:h-8 w-auto hover:opacity-80 transition-opacity" />
         </a>
-      </div>
+      </header>
 
-      <div className="flex-1 flex flex-col items-center justify-center">
+      {/* Main content */}
+      <main className="flex-1 flex flex-col items-center justify-center p-4 md:p-6">
         <div className="max-w-md w-full mx-auto text-center">
-          <h1 className="text-5xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 animate-pulse">
+          <h1 className="text-4xl md:text-5xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 animate-pulse">
             Neon Speed
           </h1>
 
-          <p className="text-gray-300 mb-8 text-pretty">
+          <p className="text-gray-300 mb-6 md:mb-8 text-pretty">
             Are you able to react as fast as it takes to provision a Postgres database on Neon?
           </p>
 
           {gameState === "idle" && (
             <Button
               onClick={startGame}
-              className="w-full max-w-xs text-black py-6 text-lg rounded-md  border-0 shadow-lg bg-[#00E599] hover:bg-[#00e5bf]"
+              className="w-full max-w-xs mx-auto text-black py-4 md:py-6 text-lg rounded-md border-0 shadow-lg bg-[#00E599] hover:bg-[#00e5bf]"
             >
               Start Game
             </Button>
           )}
 
           {(gameState === "waiting" || gameState === "ready") && (
-            <div className="mb-8">
+            <div className="mb-6 md:mb-8">
               <motion.div
                 className={`w-64 h-64 mx-auto rounded-lg cursor-pointer flex items-center justify-center text-white font-bold text-xl ${
                   gameState === "waiting" ? "bg-red-500" : "bg-green-500"
@@ -122,8 +124,8 @@ export default function NeonSpeedGame() {
           )}
 
           {gameState === "results" && (
-            <Card className="p-6 bg-[#1a1a1a] border-gray-800">
-              <h2 className="text-2xl font-bold text-white mb-4">Results</h2>
+            <Card className="p-4 md:p-6 bg-[#1a1a1a] border-gray-800">
+              <h2 className="text-xl md:text-2xl font-bold text-white mb-4">Results</h2>
 
               <div className="space-y-4 mb-6">
                 <div>
@@ -164,12 +166,12 @@ export default function NeonSpeedGame() {
             </Card>
           )}
         </div>
-      </div>
+      </main>
 
-      {/* v0 Badge at bottom center */}
-      <div className="flex justify-center mt-8 mb-4">
+      {/* Footer with v0 Badge */}
+      <footer className="flex justify-center py-4 md:py-6">
         <V0Badge />
-      </div>
+      </footer>
     </div>
   )
 }

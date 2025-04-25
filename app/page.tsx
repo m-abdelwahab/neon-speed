@@ -165,7 +165,7 @@ export default function NeonSpeedGame() {
               <p className="text-gray-300 mb-8 text-xl">Get ready! Click when the square turns green.</p>
 
               <motion.div
-                className={`w-80 h-80 rounded-none cursor-pointer flex items-center justify-center text-white font-bold text-3xl ${
+                className={`w-80 h-80 rounded-[0.375rem] cursor-pointer flex items-center justify-center text-white font-bold text-3xl ${
                   gameState === "waiting" ? "bg-red-500" : "bg-green-500"
                 }`}
                 onClick={handleClick}
@@ -205,9 +205,9 @@ export default function NeonSpeedGame() {
                 </div>
 
                 <div className="pt-4 border-t border-gray-800">
-                  <p className="text-white">
+                  <p className="text-white text-pretty">
                     {reactionTime && reactionTime < neonProvisioningTime
-                      ? "Impressive! You beat Neon's average database provisioning time. Sign up for a free account to try it yourself! "
+                      ? "Impressive! You beat Neon's average database provisioning time. Sign up for a free account to try it yourself!"
                       : "Don't feel bad - Neon's Postgres provisioning time is fast. Try it yourself with a free account"}
                   </p>
                 </div>

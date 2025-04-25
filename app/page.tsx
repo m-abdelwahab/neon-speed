@@ -95,7 +95,7 @@ export default function NeonSpeedGame() {
           {(gameState === "waiting" || gameState === "ready") && (
             <div className="mb-6 md:mb-8">
               <motion.div
-                className={`w-64 h-64 mx-auto rounded-lg cursor-pointer flex items-center justify-center text-white font-bold text-xl ${
+                className={`w-64 h-64 mx-auto rounded-[0.375rem] cursor-pointer flex items-center justify-center text-white font-bold text-xl ${
                   gameState === "waiting" ? "bg-red-500" : "bg-green-500"
                 }`}
                 onClick={handleClick}

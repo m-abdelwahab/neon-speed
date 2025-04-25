@@ -68,7 +68,7 @@ export default function NeonSpeedGame() {
           Neon Speed
         </h1>
 
-        <p className="text-gray-300 mb-8 text-pretty">Are you able to react as fast as it takes to provision a Neon database?</p>
+        <p className="text-gray-300 mb-8 text-pretty">Are you able to react as fast as it takes to provision a Postgres database on Neon?</p>
 
         {gameState === "idle" && (
           <Button
@@ -123,14 +123,13 @@ export default function NeonSpeedGame() {
               <div>
                 <p className="text-gray-400 text-sm">Provisioning a Postgres database on Neon takes</p>
                 <p className="text-2xl font-bold text-cyan-400">~{neonProvisioningTime} ms</p>
-                <p className="text-xs text-gray-500 mt-1">Try it yourself with a free account</p>
               </div>
 
               <div className="pt-4 border-t border-gray-800">
                 <p className="text-white">
                   {reactionTime && reactionTime < neonProvisioningTime
-                    ? "Impressive! Your reflexes beat Neon's lightning-fast database provisioning."
-                    : "Don't feel bad - Neon's Postgres is ridiculously fast. Most humans can't beat 500ms!"}
+                    ? "Impressive! Your reflexes beat Neon's average database provisioning time."
+                    : "Don't feel bad - Neon's Postgres provisioning time is fast. Try it yourself with a free account"}
                 </p>
               </div>
             </div>
@@ -140,7 +139,7 @@ export default function NeonSpeedGame() {
                 href="https://neon.tech/signup?ref=neon-speed"
                 className="block w-full py-3 bg-gradient-to-r from-green-500 to-cyan-500 hover:from-green-600 hover:to-cyan-600 text-white font-medium rounded-md text-center"
               >
-                Try Neon's Serverless Postgres
+               Deploy Postgres
               </a>
 
               <Button

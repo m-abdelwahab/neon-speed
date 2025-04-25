@@ -58,9 +58,15 @@
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.6",
     "zod": "^3.24.1",
+    "@remix-run/react": "latest",
+    "@sveltejs/kit": "latest",
+    "svelte": "latest",
+    "vue": "latest",
+    "vue-router": "latest",
     "@emotion/is-prop-valid": "latest",
-    "framer-motion": "latest",
-    "react-confetti": "latest"
+    "react-confetti": "latest",
+    "@vercel/analytics": "latest",
+    "framer-motion": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",
